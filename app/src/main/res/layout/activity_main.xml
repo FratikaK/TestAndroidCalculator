@@ -6,13 +6,123 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/subFormula"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:text="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/formula" android:textSize="30sp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/sign" android:textSize="30sp"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <Button
+                    android:text="C"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/clear" app:backgroundTint="#87C892"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:text="DEL"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/delete" app:backgroundTint="#87C892"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <Button
+                    android:text="7"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/num7" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:text="8"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/num8" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:text="9"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/num9" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:text="/"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/divide" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <Button
+                    android:text="4"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/num4" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:text="5"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/num5" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:text="6"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/num6" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:text="*"
+                    android:layout_width="wrap_content"
+                    app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:id="@+id/multiption" android:layout_height="85dp"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <Button
+                    android:text="1"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/num1" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:text="2"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/num2" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:text="3"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/num3" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:text="-"
+                    android:layout_width="wrap_content"
+                    app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:id="@+id/subtraction" android:layout_height="85dp"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="143dp">
+            <Button
+                    android:text="0"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/num0" app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:layout_height="85dp"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:id="@+id/result" android:text="RESULT"
+                    android:layout_height="85dp"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    app:backgroundTint="#359C8D"
+                    android:textSize="18sp" android:id="@+id/addition" android:text="+" android:layout_height="85dp"/>
+        </TableRow>
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
