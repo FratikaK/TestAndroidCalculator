@@ -1,34 +1,46 @@
 package com.example.testandroidcalculator
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import java.lang.StringBuilder
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
         lateinit var result: String
-        fun calcCation(firstStr: String, secondStr: String, calc: String): String {
+
+        /**
+         * 四則演算を行う処理
+         * @return String型の四則演算結果
+         * @exception NumberFormatException
+         */
+        fun calcCation(firstStr: String, secondStr: String, calc: String, fragmentManager: FragmentManager): String {
             if (calc == "/" || calc == "*" || calc == "-" || calc == "+") {
-                val firstNum = Integer.parseInt(firstStr)
-                val secondNum = Integer.parseInt(secondStr)
-                when (calc) {
-                    "/" -> {
-                        return "${firstNum / secondNum}"
+                try {
+                    val firstNum = Integer.parseInt(firstStr)
+                    val secondNum = Integer.parseInt(secondStr)
+                    when (calc) {
+                        "/" -> {
+                            return "${firstNum / secondNum}"
+                        }
+                        "*" -> {
+                            return "${firstNum * secondNum}"
+                        }
+                        "-" -> {
+                            return "${firstNum - secondNum}"
+                        }
+                        "+" -> {
+                            return "${firstNum + secondNum}"
+                        }
                     }
-                    "*" -> {
-                        return "${firstNum * secondNum}"
-                    }
-                    "-" -> {
-                        return "${firstNum - secondNum}"
-                    }
-                    "+" -> {
-                        return "${firstNum + secondNum}"
-                    }
+                } catch (e: NumberFormatException) {
+                    ErrorDialogFragment().show(fragmentManager, "test alert dialog")
                 }
             }
             return "Error"
@@ -90,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                 return
             }
             val getNum = findViewById<Button>(v.id).text
-            var formula = findViewById<TextView>(R.id.formula)
+            val formula = findViewById<TextView>(R.id.formula)
 
             if (getNum.equals("0") && formula.text.equals("0")) {
                 return
@@ -122,6 +134,7 @@ class MainActivity : AppCompatActivity() {
             val formula = findViewById<TextView>(R.id.formula)
             val subNum = findViewById<TextView>(R.id.subFormula)
             val sign = findViewById<TextView>(R.id.sign)
+            val fragmentManager = supportFragmentManager
 
             if (getSignButton.equals("C")) {
                 formula.text = "0"
@@ -129,12 +142,12 @@ class MainActivity : AppCompatActivity() {
                 sign.text = ""
                 result = ""
                 return
-            }else if (getSignButton.equals("DEL")){
+            } else if (getSignButton.equals("DEL")) {
                 formula.text = "0"
                 return
             }
 
-            if (getSignButton.equals("RESULT") && subNum.text.equals("")){
+            if (getSignButton.equals("RESULT") && subNum.text.equals("")) {
                 return
             }
 
@@ -145,7 +158,8 @@ class MainActivity : AppCompatActivity() {
             } else if (!subNum.text.equals("") && !getSignButton.equals("RESULT")) {
                 sign.text = getSignButton
             } else {
-                formula.text = calcCation(subNum.text as String, formula.text as String, sign.text as String)
+                formula.text =
+                    calcCation(subNum.text as String, formula.text as String, sign.text as String, fragmentManager)
                 sign.text = ""
                 subNum.text = ""
                 result = ""
