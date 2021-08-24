@@ -2,12 +2,8 @@ package com.example.testandroidcalculator
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import java.lang.ArithmeticException
-import java.lang.IllegalStateException
 
 class ErrorDialogFragment(private val exceptionType: String) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

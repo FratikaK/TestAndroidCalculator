@@ -1,15 +1,12 @@
 package com.example.testandroidcalculator
 
 import android.annotation.SuppressLint
-import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import java.lang.ArithmeticException
 
 class MainActivity : AppCompatActivity() {
 
