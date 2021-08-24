@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import java.lang.ArithmeticException
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,7 +41,9 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 } catch (e: NumberFormatException) {
-                    ErrorDialogFragment().show(fragmentManager, "test alert dialog")
+                    ErrorDialogFragment("NumberFormatException").show(fragmentManager, "test alert dialog")
+                } catch (e: ArithmeticException) {
+                    ErrorDialogFragment("ArithmeticException").show(fragmentManager, "test alert dialog")
                 }
             }
             return "Error"
@@ -151,6 +154,15 @@ class MainActivity : AppCompatActivity() {
                 return
             }
 
+            //負の値から計算する場合
+            if (subNum.text.equals("") && formula.text == "0" && getSignButton == "-"){
+                formula.text = "-"
+                return
+            }else if (!subNum.text.equals("") && formula.text == "0" && getSignButton == "-"){
+                formula.text = "-"
+                return
+            }
+
             if (subNum.text.equals("")) {
                 subNum.text = formula.text
                 sign.text = getSignButton
@@ -164,7 +176,6 @@ class MainActivity : AppCompatActivity() {
                 subNum.text = ""
                 result = ""
             }
-
         }
     }
 }
